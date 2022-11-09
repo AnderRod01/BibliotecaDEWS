@@ -20,6 +20,17 @@ body {
     width: 100%;
 }
 
+input {
+    padding: 6px 12px 5px;
+    font-size: 14px;
+    background-color: #555555;
+    font-weight: bold;    
+    color: #ffffff;
+    border-radius: 30px;   
+    border: 1px solid #999;
+    text-transform: uppercase;
+}
+
 #header {
     position: absolute;
     top: 0px;

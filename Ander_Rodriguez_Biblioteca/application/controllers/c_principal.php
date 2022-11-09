@@ -16,13 +16,14 @@
         function getGeneros(){
             $data['listaGeneros'] = $this->M_principal->getGeneros();
             $data['listaLibros'] = array();
-            $this->load->view('v_principal', $data);
+            $this->load->view('v_cabecera', $data);
         }
 
         function getLibrosPorGenero($genero){
             $data['listaGeneros'] = $this->M_principal->getGeneros();
             $data['listaLibros'] = $this->M_principal->getLibrosPorGenero($genero);
-            $this->load->view('v_principal', $data);
+            $this->load->view('v_cabecera', $data);
+            $this->load->view('v_principal',$data);
             $this->load->view('v_footer');
         }
 
