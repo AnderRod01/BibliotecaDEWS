@@ -15,7 +15,7 @@
                             $nombre = $libro->nombre;
                             echo "<tr>
                                     <td>
-                                    <input type='checkbox' name='chkLibro' value='$idLibro'>
+                                    <input type='checkbox' name='chkLibros[]' value='$idLibro'>
                                     </td>
                                     <td>
                                         $titulo

@@ -24,6 +24,30 @@
             $data['listaLibros'] = $this->M_principal->getLibrosPorGenero($genero);
             $this->load->view('v_cabecera', $data);
             $this->load->view('v_principal',$data);
+
+
+            
+            $librosSeleccionados = $this->input->post('chkLibros');
+            
+            $data['librosPrestados'] = [];
+            $data['librosNoPrestados'] = [];
+
+            if (count($librosSeleccionados) > 0){
+                
+                foreach ($librosSeleccionados as $libro) {
+                    $titulo = $this->M_principal->getTituloLibro($libro)[0];
+
+                    if ($this->M_principal->contarPrestamos($libro) <= 4){
+
+                        $this->M_principal->aniadirPrestamos($librosSeleccionados);
+                        array_push($data['librosPrestados'], $titulo);
+
+                    }else{
+                        array_push($data['librosNoPrestados'], $titulo);
+                    }
+                }
+                $this->load->view('v_prestamos', $data);
+            }
             $this->load->view('v_footer');
         }
 
