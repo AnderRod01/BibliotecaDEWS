@@ -10,8 +10,19 @@
 
         function index (){
             $this->getGeneros();
+
+            $this->load->library('calendar');
+
+            $dias = array();
+            for($i=0; $i<31; $i++){
+                array_push($dias, "index.php/getPrestamosDia/".date('Y')."-".date('m')."-".$i);
+            }
+
+            $calendario['calendario'] = $this->calendar->generate(date('Y'), date('m'), $dias);
+            $this->load->view('v_calendario', $calendario);
             $this->load->view('v_footer');
         }
+        
 
         function getGeneros(){
             $data['listaGeneros'] = $this->M_principal->getGeneros();
@@ -51,4 +62,14 @@
             $this->load->view('v_footer');
         }
 
+
+        function getPrestamosDia($fecha){
+            $data['listaLibros'] = $this->M_principal->getPrestamosDia($fecha);
+            $data['listaGeneros'] = $this->M_principal->getGeneros();
+
+
+            $this->load->view('v_cabecera', $data);
+            $this->load->view('v_prestamosDia', $data);
+            $this->load->view('v_footer');
+        }
     }

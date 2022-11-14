@@ -51,5 +51,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'c_principal';
 $route['getLibrosPorGenero/(:any)'] = 'c_principal/getLibrosPorGenero/$1';
+$route['getPrestamosDia/(:any)'] = 'c_principal/getPrestamosDia/$1';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

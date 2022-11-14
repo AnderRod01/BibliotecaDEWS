@@ -40,6 +40,12 @@
 
         }
 
+        function getPrestamosDia($fecha){
+            $query = "SELECT DISTINCT titulo FROM prestamos, libros WHERE fecha = '$fecha' AND libros.idlibro = prestamos.idlibro";
+            $rs = $this->db->query($query);
+
+            return $rs->result();
+        }
 
         function getTituloLibro ($idLibro){
             $query ="SELECT titulo from libros where idlibro= '$idLibro'";
